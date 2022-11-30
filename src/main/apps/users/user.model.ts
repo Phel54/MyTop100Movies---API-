@@ -58,7 +58,6 @@ const userSchema = new Schema(
         },
         role: {
 			type: String,
-			enum: ['User', 'Publisher','Others'],
             default:"User"
 		},
         gender: {
