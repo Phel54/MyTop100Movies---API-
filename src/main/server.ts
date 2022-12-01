@@ -6,7 +6,6 @@ import cors from 'cors';
 import mongoSanitize from 'express-mongo-sanitize';
 import helmet from 'helmet';
 import hpp from 'hpp';
-import xss from 'xss-clean';
 import morganMiddleware from './middleware/morganMiddleware';
 import { LoggerStream } from './logs/index.log';
 
@@ -23,7 +22,7 @@ app.use(cors())
 app.use(mongoSanitize()) //Use for security to prevent NoSql injections
 app.use(helmet()) //Adds extra headers to protect the routes
 app.use(hpp()) //To prevent HTTP Parameter Pollution.
-app.use(xss()) //To prevent a harmful script being sent with the POST request
+// app.use(xss()) //To prevent a harmful script being sent with the POST request
 
 
 /**
