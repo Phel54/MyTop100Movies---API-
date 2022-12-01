@@ -6,7 +6,7 @@ import adminControllers from './admin.controllers';
 
 const adminRouter = express.Router();
 
-adminRouter.route('/signup').post(Authentication.validateToken,adminControllers.createUser, Authorization.authorizeRoles('Super-Admin'));
+adminRouter.route('/signup').post(adminControllers.createUser);
 adminRouter.route('/activate/token/:token').post(adminControllers.activate);
 adminRouter.route('/login').post(adminControllers.login);
 adminRouter.route('/resendcode').post(adminControllers.resendCode);

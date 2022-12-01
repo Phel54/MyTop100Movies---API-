@@ -2,7 +2,7 @@
   "name": "challenge",
   "version": "1.0.0",
   "description": "",
-  "main": ".eslintrc.js",
+  "main": "index.ts",
   "scripts": {
     "start": "ts-node src/main/server.ts",
     "test": "jest",

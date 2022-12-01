@@ -1,4 +1,3 @@
-/* eslint-disable */
 import express from 'express';
 import Authentication from '../../middleware/users-auth.middleware';
 import Authorization from '../../middleware/authorize-middleware';

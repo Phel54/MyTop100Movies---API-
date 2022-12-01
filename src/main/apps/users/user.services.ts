@@ -75,8 +75,8 @@ class UserServices {
         return itExist;
       }
       async viewAllUsers(limit: number , page: number) {
-        const numlimit = limit || 100
-        const numPage = page || 10
+        const numlimit = limit || 10
+        const numPage = page || 1
         const options = {
           page: numPage,
           limit: numlimit,

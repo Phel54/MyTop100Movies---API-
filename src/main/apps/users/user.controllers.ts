@@ -1,9 +1,8 @@
-/* eslint-disable */
 import { Request, Response } from 'express';
 import userServices from './user.services';
 import apiResponse from '../../util/apiResponse';
 import { IUsers } from './user.model';
-import logger from 'src/main/logs/index.log';
+import logger from '../../logs/index.log';
 import mongoose from 'mongoose';
 
 class UserController {
@@ -229,8 +228,8 @@ class UserController {
             return apiResponse.notFoundResponse(res, message);
           }
           const userData = req.body;
-          await userServices.updateUser(userId, userData);
-          return apiResponse.successResponse(res, 'Update Successfull');
+          await userServices.removeUser(objectId);
+          return apiResponse.successResponse(res, 'Deletion Successfull');
         } catch (error: any) {
           console.log(error);
           logger.error(error);

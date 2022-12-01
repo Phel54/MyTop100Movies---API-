@@ -56,7 +56,17 @@ app.get('/', (req, res, next) => {
     })
 })
 
+import userRouter from './apps/users/user.routes';
+router.use('/user',userRouter)
 
+import movieRouter from './apps/movies/movies.routes';
+router.use('/movies',movieRouter)
+
+import adminRouter from './apps/admin/admin.routes';
+router.use('/admin',adminRouter)
+
+import ratingsRouter from './apps/ratings/ratings.routes';
+router.use('/ratings',ratingsRouter)
 
 export default app;
 
