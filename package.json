@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.ts",
   "scripts": {
-    "start": "node dist/server.js",
+    "start": "node dist/index.js",
     "test": "jest",
     "tsc": "tsc",
     "postinstall": "npm run tsc",
