@@ -6,6 +6,8 @@
   "scripts": {
     "start": "ts-node src/main/server.ts",
     "test": "jest",
+    "tsc": "tsc",
+    "postinstall": "npm run tsc",
     "test:unit": "jest unit",
     "test:int": "jest int",
     "test:coverage": "jest --coverage",
