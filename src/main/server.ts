@@ -8,7 +8,7 @@ import helmet from 'helmet';
 import hpp from 'hpp';
 import morganMiddleware from './middleware/morganMiddleware';
 import { LoggerStream } from './logs/index.log';
-
+import Database from './config/db';
 const app = express();
 
 app.use(express.urlencoded({ extended: true }))
@@ -23,7 +23,9 @@ app.use(mongoSanitize()) //Use for security to prevent NoSql injections
 app.use(helmet()) //Adds extra headers to protect the routes
 app.use(hpp()) //To prevent HTTP Parameter Pollution.
 // app.use(xss()) //To prevent a harmful script being sent with the POST request
-
+if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'PRODUCTION') {
+    Database.getInstance()
+ }
 
 /**
  * Initiate the Routes
