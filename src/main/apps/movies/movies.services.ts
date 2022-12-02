@@ -40,9 +40,11 @@ class MovieServices{
       const options = {
         page: numPage,
         limit: numlimit,
-        sort: 'createdAt'
+        sort: {
+          averageRating: -1
+        }
       };
-      const query = {averageRating: { $gte: 4.5 },isActive:true}
+      const query = {averageRating: { $gte: 3.5 },isActive:true}
       const movieData = await Movies.paginate(query, options, (err, result) => {
         if (err) {
           throw new Error(err);
