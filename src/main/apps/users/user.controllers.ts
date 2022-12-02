@@ -135,7 +135,7 @@ class UserController {
           }
           const token = Math.floor(100000 + Math.random() * 900000);
           await userServices.saveResetPasswordDetails(user, token);
-          return apiResponse.successResponse(res, `Reset code has been sent ${token}`);
+          return apiResponse.successResponseWithData(res, `Reset code has been sent `,token);
         } catch (error: any) {
           console.log(error);
           logger.error(error);
@@ -155,7 +155,7 @@ class UserController {
     
           await user.save();
     
-          return apiResponse.successResponse(res, 'Password reset successfully');
+          return apiResponse.successResponse(res, 'Password reset successfull');
         } catch (error: any) {
           console.log(error);
           return apiResponse.errorResponse(res, error.message, 'Technical Server Error');
@@ -209,8 +209,9 @@ class UserController {
             const message = 'user not found';
             return apiResponse.notFoundResponse(res, message);
           }
+          var objectId = new mongoose.Types.ObjectId(userId);
           const userData = req.body;
-          await userServices.updateUser(userId, userData);
+          await userServices.updateUser(objectId, userData);
           return apiResponse.successResponse(res, 'Update Successfull');
         } catch (error: any) {
           console.log(error);

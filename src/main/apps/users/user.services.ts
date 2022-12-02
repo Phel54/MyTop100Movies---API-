@@ -99,11 +99,11 @@ class UserServices {
         const userData = await User.findOne({ email: email }).select('-password');
         return userData;
       }
-      async updateUser(id: string, userData: IUsers) {
-        return await User.findByIdAndUpdate(id, { $set: userData }).select('-password');
+      async updateUser(id: Types.ObjectId, userData: IUsers) {
+        return await User.updateOne({_id:id}, { $set: userData }).select('-password');
       }
       async removeUser(id: Types.ObjectId) {
-        return await User.updateOne(id, { $set: { isActive: false } }).select('-password');
+        return await User.updateOne({_id:id}, { $set: { isActive: false } }).select('-password');
       } 
     
       async verifyRefreshToken(refreshToken: any) {
