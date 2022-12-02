@@ -150,7 +150,7 @@ class AdminController {
       }
       const token = Math.floor(100000 + Math.random() * 900000);
       await adminServices.saveResetPasswordDetails(admin, token);
-      return apiResponse.successResponse(res, `Reset code has been sent ${token}`);
+      return apiResponse.successResponseWithData(res, `Reset code has been sent`,token);
     } catch (error: any) {
       console.log(error);
       Logger.error(error);

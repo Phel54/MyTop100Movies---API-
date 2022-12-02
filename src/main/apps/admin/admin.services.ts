@@ -102,10 +102,10 @@ class AdminServices {
     return adminData;
   }
   async updateUser(id: string, adminData: IAdmin) {
-    return await Admin.findByIdAndUpdate(id, { $set: adminData }).select('-password');
+    return await Admin.updateOne({_id:id}, { $set: adminData }).select('-password');
   }
   async removeUser(id: Types.ObjectId) {
-    return await Admin.updateOne(id, { $set: { isActive: false } }).select('-password');
+    return await Admin.updateOne({_id:id}, { $set: { isActive: false } }).select('-password');
   }
   verifyRefreshToken(refreshToken: any) {
     const token = jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET as string) as JwtPayload;

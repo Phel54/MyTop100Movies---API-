@@ -38,7 +38,7 @@ let adminSchema = new Schema({
         required: true,
         unique: true,
     },
-    phone: {
+    phoneNumber: {
         type: String,
         unique: true,
         required: true,
