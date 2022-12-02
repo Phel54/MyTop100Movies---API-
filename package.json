@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.ts",
   "scripts": {
-    "start": "node dist/index.js",
+    "start": "node dist/main/index.js",
     "test": "export NODE_ENV=TEST && jest",
     "tsc": "tsc",
     "postinstall": "npm run tsc",
