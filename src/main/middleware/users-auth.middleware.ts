@@ -21,7 +21,6 @@ class Authentication {
                 subject: process.env.JWT_SUBJECT,
                 audience: process.env.JWT_AUDIENCE,			
             };
-            console.log(token);
             try {
                 // verify makes sure that the token hasn't expired and has been issued by us
                 result = jwt.verify(token, `${process.env.JWT_SECRET}`, options);
