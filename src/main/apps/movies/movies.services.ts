@@ -34,5 +34,22 @@ class MovieServices{
     removeMovie =async (id: Types.ObjectId) => {
         return await Movies.updateOne(id, { $set: { isActive: false } });
     }
+    getMoviesWithHighestRating = async (limit: number , page: number) => {
+      const numlimit = limit || 10
+      const numPage = page || 1
+      const options = {
+        page: numPage,
+        limit: numlimit,
+        sort: 'createdAt'
+      };
+      const query = {averageRating: { $gte: 4.5 },isActive:true}
+      const movieData = await Movies.paginate(query, options, (err, result) => {
+        if (err) {
+          throw new Error(err);
+        }
+        return result;
+      });
+      return movieData;
+  }
 }
 export default new MovieServices();
