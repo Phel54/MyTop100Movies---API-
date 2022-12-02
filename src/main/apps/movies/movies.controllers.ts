@@ -107,6 +107,25 @@ class MoviesController {
       return apiResponse.errorResponse(res, error.message, 'Technical Server Error');
     }
   };
+
+  getMoviesWithLowestRating = async (req: Request, res: Response) => {
+    try {
+      let limit;
+      if (req.query && req.query.limit) {
+        limit = (req.query as any).limit;
+      }
+      let page;
+      if (req.query && req.query.page) {
+        page = (req.query as any).page;
+      }
+      const movies = await moviesServices.getMoviesWithLowestRating(limit, page);
+      return apiResponse.successResponseWithData(res, 'All movies', movies);
+    } catch (error: any) {
+      console.log(error);
+      logger.error(error);
+      return apiResponse.errorResponse(res, error.message, 'Technical Server Error');
+    }
+  };
 }
 
 export default new MoviesController();

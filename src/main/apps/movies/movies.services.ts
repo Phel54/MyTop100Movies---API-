@@ -53,5 +53,24 @@ class MovieServices{
       });
       return movieData;
   }
+  getMoviesWithLowestRating = async (limit: number , page: number) => {
+    const numlimit = limit || 10
+    const numPage = page || 1
+    const options = {
+      page: numPage,
+      limit: numlimit,
+      sort: {
+        averageRating: -1
+      }
+    };
+    const query = {averageRating: { $lte: 3.5 },isActive:true}
+    const movieData = await Movies.paginate(query, options, (err, result) => {
+      if (err) {
+        throw new Error(err);
+      }
+      return result;
+    });
+    return movieData;
+}
 }
 export default new MovieServices();
