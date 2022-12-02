@@ -22,25 +22,6 @@ const logConfiguration = {
             ),
         }),
         new winston.transports.Console({
-            level: 'info',
-            format: winston.format.combine(
-                winston.format.label({
-                    label: `🔷 `,
-                }),
-                winston.format.timestamp({
-                    format: 'MMM-DD-YYYY HH:mm:ss',
-                }),
-                winston.format.printf(
-                    (console) =>
-                        `${console.level}: ${console.label}: ${[console.timestamp]}: ${
-                            console.message
-                        }`
-                ),        winston.format.colorize({
-                    all:true
-                }),
-            ),
-        }),
-        new winston.transports.Console({
             level: 'silly',
             format: winston.format.combine(
                 winston.format.label({
